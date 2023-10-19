@@ -28,4 +28,17 @@ alter table usuarios add Sitios varchar(200) null;
 
 update usuarios set Sitios = 'Google' where id_U = '10';
 
-select Sitios as sitio from usuarios where id_U= '10';
+select Sitios as sitio from usuarios where id_U= '15';
+
+create table invitacion (	
+
+	id_invi varchar(10) not null,	
+    text varchar(200) null,
+    
+    primary key (id_invi)
+
+);
+
+insert into invitacion (id_invi, text) values ('1', 'Visita el sena');
+insert into invitacion (id_invi, text) values ('2', 'Ingresa al sitio');
+insert into invitacion (id_invi, text) values ('3', 'visita mi sitio');

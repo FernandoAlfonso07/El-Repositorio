@@ -197,13 +197,12 @@ function Actualizar($id, $web)
     try { //ESTO ES PARA EJECUTAR UNA ACCION EN LA BASE DE DATOS ALGO QUE NO SE VE
         //EN ESTE CASO INSERTAR DATOS.
         $resultado = $conexion->query($sql);
-
     } catch (mysqli_sql_exception $e) {
         //var_dump( $e );
         //echo $e->getMessage(); //Imprimie el error.
     }
 
-    if ($conexion ->affected_rows > 0) {
+    if ($conexion->affected_rows > 0) {
 
         //echo "Grabado grabado hola";
         $salida = 1;
@@ -247,7 +246,7 @@ function IrWen($id) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
 
     while ($fila = mysqli_fetch_assoc($resultado)) {
 
-        $salida = "<a href='". $fila['sitio']. "'>";
+        $salida = "<a href='" . $fila['sitio'] . "'>";
         $salida .= "Vea mi sitio";
         $salida .= "</a>";
     } // Mostrar SQL
@@ -256,18 +255,18 @@ function IrWen($id) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
 
     return $salida;
 }
-   
-function IrWen2($id, $frase) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
+
+function IrWen2($id, $id_invi) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
     $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
-    $sql = "select Sitios as sitio from usuarios where id_U= '$id';"; //CODIGO SQL mostrar link de un datos
+    $sql = "select text as texto, Sitios as sitio from usuarios, invitacion where id_U= '$id' and id_invi = '$id_invi';"; //CODIGO SQL mostrar link de un datos
     $resultado = $conexion->query($sql);
 
     while ($fila = mysqli_fetch_assoc($resultado)) {
 
-        $salida = "<a href='". $fila['sitio']. "'>";
-        $salida .= "$frase";
+        $salida = "<a href='" . $fila['sitio'] . "'>";
+        $salida .= $fila['texto'];
         $salida .= "</a>";
     } // Mostrar SQL
 
@@ -275,4 +274,39 @@ function IrWen2($id, $frase) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
 
     return $salida;
 }
-   
+
+
+function insertarINvi($id_invi, $texto)
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "insert into invitacion (id_invi, text) values ('$id_invi', '$texto');"; //CODIGO SQL en donde insertare datos a la tabla.   
+    $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
+
+    //Recorre el recordset.
+
+
+    try { //ESTO ES PARA EJECUTAR UNA ACCION EN LA BASE DE DATOS ALGO QUE NO SE VE
+        //EN ESTE CASO INSERTAR DATOS.
+        $resultado = $conexion->query($sql);
+    } catch (mysqli_sql_exception $e) {
+        //var_dump( $e );
+        //echo $e->getMessage(); //Imprimie el error.
+    }
+
+    if ($conexion->affected_rows > 0) {
+
+        //echo "Grabado grabado hola";
+        $salida = 1;
+    } else {
+
+        //echo "Error error";
+        $salida = 0;
+    }
+
+    // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida; //No es necesario porque no tiene WHILE.
+}
