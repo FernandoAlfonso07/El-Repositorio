@@ -32,5 +32,31 @@ function conectar()
         $salida = $fila['suma'];
     } // Mostrar SQL
 
-    return $salida; //RETORNA LA FUNCION
+    $conexion->close(); //Cierra la conección.
+
+    return $salida; //RETORNA LA FUNCION.
+
+
+}
+function conectar2()
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "select 10 as n1,";
+    $sql .= " 20 as n2"; //Concatena las lineas de SQL.
+    $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
+
+    //Recorre el recordset.
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+
+        $salida = $fila['n1'];
+        $salida += $fila['n2']; //SUMA las filas con "+".
+    } // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida; //RETORNA LA FUNCION.
+
+
 }
