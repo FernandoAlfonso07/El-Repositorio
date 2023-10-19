@@ -256,3 +256,23 @@ function IrWen($id) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
 
     return $salida;
 }
+   
+function IrWen2($id, $frase) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "select Sitios as sitio from usuarios where id_U= '$id';"; //CODIGO SQL mostrar link de un datos
+    $resultado = $conexion->query($sql);
+
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+
+        $salida = "<a href='". $fila['sitio']. "'>";
+        $salida .= "$frase";
+        $salida .= "</a>";
+    } // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida;
+}
+   
