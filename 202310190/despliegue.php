@@ -11,4 +11,6 @@ echo conectar2(). '<br>'; //Invoca la funcion de conectar a una base de datos pa
 
 //echo conectar3(); //Invoca la funcion de decir si es mayor o menor de edad;
 
-echo CONTARusuarios(); //Imprime e numero de usuaios que hay en esa base de datos.
+//echo CONTARusuarios(); //Imprime e numero de usuaios que hay en esa base de datos.
+
+echo InsertarUSUARIO('Monarca'); // Es para insertar datos.

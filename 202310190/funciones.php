@@ -110,3 +110,39 @@ function CONTARusuarios()
 
 
 }
+
+function InsertarUSUARIO($nombre)
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "insert into usuarios (nombre) values ('$nombre')"; //CODIGO SQL en donde insertare datos a la tabla.    $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
+
+    //Recorre el recordset.
+
+
+        try { //ESTO ES PARA EJECUTAR UNA ACCION EN LA BASE DE DATOS ALGO QUE NO SE VE
+                //EN ESTE CASO INSERTAR DATOS.
+
+            $resultado = $conexion->query($sql);
+        } catch (mysqli_sql_exception $e) {
+            //var_dump( $e );
+            //echo $e->getMessage(); //Imprimie el error.
+        }
+    
+        if ($conexion->affected_rows > 0) {
+    
+            //echo "Grabado grabado hola";
+            $salida = 1;
+        } else {
+    
+            //echo "Error error";
+            $salida = 0;
+        } 
+
+    // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    //return $salida; //No es necesario porque no tiene WHILE.
+}
+
