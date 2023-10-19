@@ -3,4 +3,6 @@
 include("funciones.php");
 
 echo consulta(). '<br>'; //Invoca la funcion para calcular área triangulo
-echo "SUMA:  " .calcular(); //Invoca la funcion de suma
+echo "SUMA:  " .calcular(). '<br>';
+
+echo conectar(); //Invoca la funcion de conectar a una base de datos para sumar
