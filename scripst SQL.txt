@@ -1,0 +1,18 @@
+select 2+1 as suma;
+
+select 10 as n1;
+select 20 as n2;
+
+create table usuarios(
+	
+    nombre varchar(100) not null
+    
+);
+
+select count(*) from usuarios;
+select * from usuarios;
+
+insert into usuarios (nombre) values ('Fernando');
+insert into usuarios (nombre) values ('Alejandra');
+insert into usuarios (nombre) values ('Roberto');
+insert into usuarios (nombre) values ('Maradona');
