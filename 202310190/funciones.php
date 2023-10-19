@@ -76,10 +76,32 @@ function conectar3()
         $salida = $fila['edad'];
 
         if ($salida >= 18) {
-            $salida =  $edadM1. $salida; //Cancadena texto con variables.
+            $salida =  $edadM1 . $salida; //Cancadena texto con variables.
         } else {
-            $salida =   $edadM2. $salida;
+            $salida =   $edadM2 . $salida;
         } //Descicion de edad < 0 >.
+    } // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida; //RETORNA LA FUNCION.
+
+
+}
+
+function CONTARusuarios()
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "select count(*) as contar from usuarios"; //CODIGO SQL.
+
+    $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
+
+    //Recorre el recordset.
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+
+        $salida = $salida. 'Hay '.$fila['contar']. ' usuarios';
+
     } // Mostrar SQL
 
     $conexion->close(); //Cierra la conección.

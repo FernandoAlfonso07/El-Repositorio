@@ -9,4 +9,6 @@ echo conectar(). '<br>'; //Invoca la funcion de conectar a una base de datos par
 echo conectar2(). '<br>'; //Invoca la funcion de conectar a una base de datos para sumar
 */
 
-echo conectar3();
+//echo conectar3(); //Invoca la funcion de decir si es mayor o menor de edad;
+
+echo CONTARusuarios();
