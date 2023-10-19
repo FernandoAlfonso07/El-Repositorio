@@ -60,3 +60,28 @@ function conectar2()
 
 
 }
+function conectar3()
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "select 21 as edad"; //CODIGO SQL.
+
+    $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
+
+    //Recorre el recordset.
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+
+        $salida = $fila['edad'];
+
+        if ($salida >=18) {echo'Mayor de edad con '.$salida .' Años ' ;} else {  
+            echo 'Menor de edad con '.$salida. ' Años ';
+        } //Descicion de edad < 0 >.
+    } // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida; //RETORNA LA FUNCION.
+
+
+}
