@@ -8,6 +8,7 @@ function consulta()
 
     return $salida; //RETORNA LA FUNCION
 }
+
 function calcular()
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
@@ -16,6 +17,7 @@ function calcular()
 
     return $salida; //RETORNA LA FUNCION
 }
+
 function conectar()
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
@@ -24,11 +26,11 @@ function conectar()
     $sql = "select 2+1 ";
     $sql .= "as suma"; //Concatena las lineas de SQL.
     $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
-
+    //Recorre el recordset.
     while ($fila = mysqli_fetch_assoc($resultado)) {
 
         $salida = $fila['suma'];
     } // Mostrar SQL
-    
+
     return $salida; //RETORNA LA FUNCION
 }
