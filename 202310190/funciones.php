@@ -186,7 +186,6 @@ function borrarUSUARIO($id)
 
 function Actualizar($id, $web)
 {
-    $men1 = "Elemento actualizado";
     $salida = ''; //Inicializa variable TEXTO o NUMERO
     $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
     $sql = "update usuarios set Sitios = '$web' where id_U = '$id';"; //CODIGO SQL en donde insertare datos a la tabla.   
@@ -207,11 +206,11 @@ function Actualizar($id, $web)
     if ($conexion ->affected_rows > 0) {
 
         //echo "Grabado grabado hola";
-        $salida = $salida. $men1;
+        $salida = 1;
     } else {
 
         //echo "Error error";
-        $salida = "Ocurrio un error.";
+        $salida = 0;
     }
 
     // Mostrar SQL
@@ -232,6 +231,25 @@ function mostrarWeb($id)
     while ($fila = mysqli_fetch_assoc($resultado)) {
 
         $salida = $fila['sitio'];
+    } // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida;
+}
+
+function IrWen($id) //ESTO LLEVA A QUE VEA EL SITIO DE ALGUIEN
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "select Sitios as sitio from usuarios where id_U= '$id';"; //CODIGO SQL mostrar link de un datos
+    $resultado = $conexion->query($sql);
+
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+
+        $salida = "<a href='". $fila['sitio']. "'>";
+        $salida .= "Vea mi sitio";
+        $salida .= "</a>";
     } // Mostrar SQL
 
     $conexion->close(); //Cierra la conección.
