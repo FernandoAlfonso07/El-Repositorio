@@ -63,7 +63,8 @@ function conectar2()
 function conectar3()
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
-
+    $edadM1 = 'Mayor de edad con ';
+    $edadM2 = 'Menor de edad con ';
     $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
     $sql = "select 21 as edad"; //CODIGO SQL.
 
@@ -74,8 +75,10 @@ function conectar3()
 
         $salida = $fila['edad'];
 
-        if ($salida >=18) {echo'Mayor de edad con '.$salida .' Años ' ;} else {  
-            echo 'Menor de edad con '.$salida. ' Años ';
+        if ($salida >= 18) {
+            $salida =  $edadM1. $salida; //Cancadena texto con variables.
+        } else {
+            $salida =   $edadM2. $salida;
         } //Descicion de edad < 0 >.
     } // Mostrar SQL
 
