@@ -93,14 +93,14 @@ function CONTARusuarios()
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
     $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
-    $sql = "select count(*) as contar from usuarios"; //CODIGO SQL.
+    $sql = "select count(*) as contar from usuarios"; //CODIGO SQL en donde cuenta los usuairos que ha en esa base de datos.
 
     $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
 
     //Recorre el recordset.
     while ($fila = mysqli_fetch_assoc($resultado)) {
 
-        $salida = $salida. 'Hay '.$fila['contar']. ' usuarios';
+        $salida = $salida. 'Hay '.$fila['contar']. ' usuarios'; 
 
     } // Mostrar SQL
 
