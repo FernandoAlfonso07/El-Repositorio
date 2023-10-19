@@ -16,3 +16,13 @@ function calcular()
 
     return $salida; //RETORNA LA FUNCION
 }
+function conectar()
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+
+    $conexion = mysqli_connect();
+
+    return $salida; //RETORNA LA FUNCION
+}
+
+
