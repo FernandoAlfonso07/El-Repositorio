@@ -20,7 +20,7 @@ function conectar()
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
 
-    $conexion = mysqli_connect();
+    $conexion = mysqli_connect(); //Conectar con base de datos
 
     return $salida; //RETORNA LA FUNCION
 }
