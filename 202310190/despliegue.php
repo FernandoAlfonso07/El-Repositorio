@@ -1,5 +1,6 @@
 <?php
 // Se incluye el archivo de funciones. 
-    include("funciones.php");
+include("funciones.php");
 
-    echo consulta(); //Invoca la funcion
+echo consulta(). '<br>'; //Invoca la funcion
+echo "SUMA:  " .calcular(); //Invoca la funcion
