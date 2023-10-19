@@ -5,14 +5,27 @@ select 20 as n2;
 
 create table usuarios(
 	
-    nombre varchar(100) not null
+    id_U int not null auto_increment,
+    nombre varchar(100) not null,
     
+    primary key(id_U)
 );
 
 select count(*) from usuarios;
+
 select * from usuarios;
 
+delete  from usuarios;
 insert into usuarios (nombre) values ('Fernando');
 insert into usuarios (nombre) values ('Alejandra');
 insert into usuarios (nombre) values ('Roberto');
 insert into usuarios (nombre) values ('Maradona');
+insert into usuarios (nombre) values ('pacho');
+
+delete from usuarios where id_U ='1';
+
+alter table usuarios add Sitios varchar(200) null;
+
+update usuarios set Sitios = 'Google' where id_U = '10';
+
+select Sitios as sitio from usuarios where id_U= '10';

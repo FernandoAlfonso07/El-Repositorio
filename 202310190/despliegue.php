@@ -13,4 +13,10 @@ echo conectar2(). '<br>'; //Invoca la funcion de conectar a una base de datos pa
 
 //echo CONTARusuarios(); //Imprime e numero de usuaios que hay en esa base de datos.
 
-echo InsertarUSUARIO('Monarca'); // Es para insertar datos.
+//echo InsertarUSUARI0('Marcos'); // Es para insertar datos.
+
+//echo borrarUSUARIO('10'); //Es para borrar un dato.
+
+echo Actualizar ('15','x.com'); //esto actualiza el sitio de un usuario.
+
+//echo mostrarWeb ('11'); //Muestra en pantalla los sitios pedido.

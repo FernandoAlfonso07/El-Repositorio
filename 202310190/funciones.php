@@ -100,8 +100,7 @@ function CONTARusuarios()
     //Recorre el recordset.
     while ($fila = mysqli_fetch_assoc($resultado)) {
 
-        $salida = $salida. 'Hay '.$fila['contar']. ' usuarios'; 
-
+        $salida = $salida . 'Hay ' . $fila['contar'] . ' usuarios';
     } // Mostrar SQL
 
     $conexion->close(); //Cierra la conección.
@@ -111,7 +110,7 @@ function CONTARusuarios()
 
 }
 
-function InsertarUSUARIO($nombre)
+function InsertarUSUARI0($nombre)
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
     $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
@@ -120,24 +119,24 @@ function InsertarUSUARIO($nombre)
     //Recorre el recordset.
 
 
-        try { //ESTO ES PARA EJECUTAR UNA ACCION EN LA BASE DE DATOS ALGO QUE NO SE VE
-                //EN ESTE CASO INSERTAR DATOS.
+    try { //ESTO ES PARA EJECUTAR UNA ACCION EN LA BASE DE DATOS ALGO QUE NO SE VE
+        //EN ESTE CASO INSERTAR DATOS.
 
-            $resultado = $conexion->query($sql);
-        } catch (mysqli_sql_exception $e) {
-            //var_dump( $e );
-            //echo $e->getMessage(); //Imprimie el error.
-        }
-    
-        if ($conexion->affected_rows > 0) {
-    
-            //echo "Grabado grabado hola";
-            $salida = 1;
-        } else {
-    
-            //echo "Error error";
-            $salida = 0;
-        } 
+        $resultado = $conexion->query($sql);
+    } catch (mysqli_sql_exception $e) {
+        //var_dump( $e );
+        //echo $e->getMessage(); //Imprimie el error.
+    }
+
+    if ($conexion->affected_rows > 0) {
+
+        //echo "Grabado grabado hola";
+        $salida = "se inserto correctamente";
+    } else {
+
+        //echo "Error error";
+        $salida = "Ocurrio un error...";
+    }
 
     // Mostrar SQL
 
@@ -146,3 +145,96 @@ function InsertarUSUARIO($nombre)
     //return $salida; //No es necesario porque no tiene WHILE.
 }
 
+
+
+function borrarUSUARIO($id)
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "delete from usuarios where id_U ='$id';"; //CODIGO SQL en donde insertare datos a la tabla.   
+    $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
+
+    //Recorre el recordset.
+
+
+    try { //ESTO ES PARA EJECUTAR UNA ACCION EN LA BASE DE DATOS ALGO QUE NO SE VE
+        //EN ESTE CASO INSERTAR DATOS.
+
+        $resultado = $conexion->query($sql);
+    } catch (mysqli_sql_exception $e) {
+        //var_dump( $e );
+        //echo $e->getMessage(); //Imprimie el error.
+    }
+
+    if ($conexion->affected_rows > 0) {
+
+        //echo "Grabado grabado hola";
+        return "Elemento borrado";
+    } else {
+
+        //echo "Error error";
+        return "Ocurrio un Error...";
+    }
+
+    // Mostrar SQL
+
+    //$conexion->close(); //Cierra la conección.
+
+    //return $salida; //No es necesario porque no tiene WHILE.
+}
+
+
+function Actualizar($id, $web)
+{
+    $men1 = "Elemento actualizado";
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "update usuarios set Sitios = '$web' where id_U = '$id';"; //CODIGO SQL en donde insertare datos a la tabla.   
+    $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
+
+    //Recorre el recordset.
+
+
+    try { //ESTO ES PARA EJECUTAR UNA ACCION EN LA BASE DE DATOS ALGO QUE NO SE VE
+        //EN ESTE CASO INSERTAR DATOS.
+        $resultado = $conexion->query($sql);
+
+    } catch (mysqli_sql_exception $e) {
+        //var_dump( $e );
+        //echo $e->getMessage(); //Imprimie el error.
+    }
+
+    if ($conexion ->affected_rows > 0) {
+
+        //echo "Grabado grabado hola";
+        $salida = $salida. $men1;
+    } else {
+
+        //echo "Error error";
+        $salida = "Ocurrio un error.";
+    }
+
+    // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida; //No es necesario porque no tiene WHILE.
+}
+
+
+function mostrarWeb($id)
+{
+    $salida = ''; //Inicializa variable TEXTO o NUMERO
+    $conexion = mysqli_connect("localhost", "root", "root", "bd_ejercicio_estudiantes1"); //Conectar con base de datos
+    $sql = "select Sitios as sitio from usuarios where id_U= '$id';"; //CODIGO SQL mostrar dato de una tabla.  
+    $resultado = $conexion->query($sql);
+
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+
+        $salida = $fila['sitio'];
+    } // Mostrar SQL
+
+    $conexion->close(); //Cierra la conección.
+
+    return $salida;
+}
