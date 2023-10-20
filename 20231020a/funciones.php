@@ -22,6 +22,6 @@ function consultar($id = null, $c = null) //crea la funcion.
         $salida .= '<b>SITIO WEB: </b>' . $fila[2] . '<br>'; //Concateno y muestra la linea deseada.
     }
 
-    $conexion->close();
+    $conexion->close(); //cierra la conexion.
     return $salida;
 }
