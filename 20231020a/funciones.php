@@ -1,5 +1,8 @@
 <?php
-
+/*
+*   Esta funcion se encarga de consultar los datos de la tabla de usuarios.
+* 
+*/
 function consultar() //crea la funcion.
 {
     $salida = ''; //Inicializa variable TEXTO o NUMERO
@@ -8,9 +11,9 @@ function consultar() //crea la funcion.
     $resultado = $conexion->query($sql); //Ejecutar lo que se pida en el sql.
 
     while ($fila = mysqli_fetch_array($resultado)) {
-        $salida .= '<b>ID: </b>'. $fila[0]. '<br>';
-        $salida .= '<b>NOMBRE: </b>'. $fila[1].'<br>';
-        $salida .= '<b>SITIO WEB: </b>'. $fila[2].'<br>';
+        $salida .= '<b>ID: </b>' . $fila[0] . '<br>';
+        $salida .= '<b>NOMBRE: </b>' . $fila[1] . '<br>';
+        $salida .= '<b>SITIO WEB: </b>' . $fila[2] . '<br>';
     }
 
     $conexion->close();
